@@ -35,10 +35,10 @@ module.exports = {
 		base: base,
 		name: 'sass',
 		input: base.src + '/sass/**/*.scss',
-		reject: '!' + base.src + '/sass/**/*.scss',
+		reject: '!' + base.src + '/sass/**/_*.scss',
 		output: base.build + '/css/',
 		opt: {
-			outputStyle: 'expended',
+			outputStyle: 'expanded',
 			indentType: 'tab',
 			indentWidth: '1'
 		}

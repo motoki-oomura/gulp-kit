@@ -1,7 +1,7 @@
 //================================================
 // constants
 //================================================
-const targetWatch = ['ejs','sass','ts'];
+const targetWatch = ['ejs','sass'];
 
 
 //================================================
@@ -20,11 +20,13 @@ plg.requireDir(config.base.tasks, {recurse: true});
 //================================================
 // tasks
 //================================================
-plg.gulp.task('watch', targetWatch, function(){
+plg.gulp.task('watch',targetWatch, function(){
 	Object.keys(config).forEach(function(key){
 		var task = config[key];
 		if(!task.name || targetWatch.indexOf(task.name) == -1) return true;
-		plg.watch(task.base.src + task.input, [task.name]);
+		plg.watch(task.input, function(e){
+			plg.gulp.start(task.name)
+		});
 
 	});
 });
