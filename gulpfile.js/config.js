@@ -23,13 +23,25 @@ module.exports = {
 		name: 'copy',
 		input: base.src + '/**/*',
 		reject: '!' + base.src + '/**/*.{scss,ejs,js,ts,tsx}',
+		rejectSass: '!' + base.src + '/sass',
+		rejectJs: '!' + base.src + '/js',
 		output: base.build + '/'
+	},
+	zip: {
+		base: base,
+		name: 'zip',
+		input: base.build + '/*',
+		output: base.root,
+		zipName: 'archive.zip',
+		opt: {
+			base: 'build'
+		}
 	},
 	ejs: {
 		base: base,
 		name: 'ejs',
-		input: base.src + '/ejs/**/*.ejs',
-		reject: '!' + base.src + '/ejs/**/_*.ejs',
+		input: base.src + '/**/*.ejs',
+		reject: '!' + base.src + '/**/_*.ejs',
 		output: base.build + '/',
 		rename: function(path){
 			path.extname = '.html';
@@ -45,6 +57,9 @@ module.exports = {
 			outputStyle: 'expanded',
 			indentType: 'tab',
 			indentWidth: '1'
+		},
+		dev: {
+			sourcemaps: true,
 		}
 	},
 	js: {

@@ -1,14 +1,14 @@
 //================================================
-// constants
+// target watch
 //================================================
-const targetWatch = ['ejs','sass', 'copy'];
+var targetWatch = ['sass', 'copy'];
 
 
 //================================================
 // require
 //================================================
-var plg = require('./gulp/plugin'),
-	config = require('./gulp/config');
+var plg = require('./plugin'),
+	config = require('./config');
 
 
 //================================================
@@ -24,10 +24,9 @@ plg.gulp.task('watch',targetWatch, function(){
 	Object.keys(config).forEach(function(key){
 		var task = config[key];
 		if(!task.name || targetWatch.indexOf(task.name) == -1) return true;
-		plg.watch(task.input, function(e){
-			plg.gulp.start(task.name)
+		plg.watch(task.input, function(){
+			plg.gulp.start(task.name);
 		});
-
 	});
 });
 
