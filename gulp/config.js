@@ -19,7 +19,11 @@ module.exports = {
 		name: 'clean'
 	},
 	copy: {
-		base: base
+		base: base,
+		name: 'copy',
+		input: base.src + '/**/*',
+		reject: '!' + base.src + '/**/*.{scss,ejs,js,ts,tsx}',
+		output: base.build + '/'
 	},
 	ejs: {
 		base: base,
