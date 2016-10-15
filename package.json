@@ -9,6 +9,8 @@
     "del": "^2.2.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
     "gulp-ejs": "^2.0.0",
     "gulp-if": "^2.0.1",
     "gulp-plumber": "^1.0.1",
@@ -16,9 +18,11 @@
     "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.13.6",
+    "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.8",
     "gulp-webpack": "^1.5.0",
     "gulp-zip": "^3.2.0",
+    "minimist": "^1.2.0",
     "require-dir": "^0.3.0"
   },
   "scripts": {
