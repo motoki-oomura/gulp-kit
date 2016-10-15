@@ -1,15 +1,15 @@
 //================================================
 // require
 //================================================
-var plg = require('../plugin'),
+var $ = require('../plugin'),
 	config = require('../config').js;
 
 
 //================================================
 // task
 //================================================
-plg.gulp.task(config.name, function(){
-	plg.gulp.src(config.base.src + config.input)
-		.pipe(plg.plumber())
-		.pipe(plg.gulp.dest(config.output));
+$.gulp.task(config.name, function(){
+	$.gulp.src(config.base.src + config.input)
+		.pipe($.plumber())
+		.pipe($.gulp.dest(config.output));
 });

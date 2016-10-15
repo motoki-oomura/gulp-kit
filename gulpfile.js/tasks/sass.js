@@ -1,7 +1,7 @@
 //================================================
 // require
 //================================================
-var plg = require('../plugin'),
+var $ = require('../plugin'),
 	config = require('../config').sass;
 
 
@@ -9,11 +9,12 @@ var plg = require('../plugin'),
 // task
 //================================================
 
-plg.gulp.task(config.name, function(){
-	plg.gulp.src([config.input, config.reject])
-		.pipe(plg.if(config.dev.sourcemaps, plg.sourcemaps.init()))
-		.pipe(plg.plumber())
-		.pipe(plg.sass(config.opt).on('error', plg.sass.logError))
-		.pipe(plg.if(config.dev.sourcemaps, plg.sourcemaps.write()))
-		.pipe(plg.gulp.dest(config.output));
+$.gulp.task(config.name, function(){
+	$.gulp.src([config.input, config.reject])
+		.pipe($.if(config.base.isDevelopment && config.dev.sourcemaps, $.sourcemaps.init()))
+		.pipe($.plumber())
+		.pipe($.sass(config.opt).on('error', $.sass.logError))
+		.pipe($.if(config.base.isDevelopment && config.dev.sourcemaps, $.sourcemaps.write()))
+		.pipe($.if(config.base.isProduction, $.cssmin()))
+		.pipe($.gulp.dest(config.output));
 });

@@ -1,18 +1,17 @@
 //================================================
 // require
 //================================================
-var plg = require('../plugin'),
+var $ = require('../plugin'),
 	config = require('../config').ts;
 
 
 //================================================
 // task
 //================================================
-plg.gulp.task(config.name, function(){
-	plg.gulp.src(config.input)
-		.pipe(plg.ts(config.opt))
-		.js
-		.pipe(plg.webpack(config.webpack))
-		.pipe(plg.gulp.dest(config.output));
+$.gulp.task(config.name, function(){
+	$.gulp.src(config.input)
+		.pipe($.ts(config.opt))
+		.pipe($.webpack(config.webpack))
+		.pipe($.gulp.dest(config.output));
 });
 

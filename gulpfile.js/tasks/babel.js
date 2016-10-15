@@ -1,16 +1,19 @@
 //================================================
 // require
 //================================================
-var plg = require('../plugin'),
+var $ = require('../plugin'),
 	config = require('../config').babel;
 
 
 //================================================
 // task
 //================================================
-plg.gulp.task(config.name, function(){
-	plg.gulp.src([config.input, config.reject])
-		.pipe(plg.plumber())
-		.pipe(plg.babel(config.opt))
-		.pipe(plg.gulp.dest(config.output));
+$.gulp.task(config.name, function(){
+	$.gulp.src([config.input, config.reject])
+		.pipe($.plumber())
+		.pipe($.babel(config.opt))
+		.pipe($.if(config.concat, $.concat(config.concatName)))
+		.pipe($.if(config.uglify && config.base.isProduction, $.uglify({preserveComments: 'some'})))
+		.pipe($.if(config.uglify && config.base.isProduction, $.rename(config.uglifyName)))
+		.pipe($.gulp.dest(config.output));
 });

@@ -1,11 +1,25 @@
 //================================================
+// minimist
+//================================================
+var minimist = require('minimist');
+var knownOptions = {
+	string: 'env',
+	default: { env: process.env.NODE_ENV || 'development' }
+};
+var options = $.minimist(process.argv.slice(2), knownOptions);
+
+
+//================================================
 // config
 //================================================
 var base = {
 	src : './src',
 	build : './build',
 	root : './',
-	tasks : './tasks'
+	tasks : './tasks',
+	isProduction: options.env === 'production',
+	isStaging: options.env === 'staging',
+	isDevelopment: options.env === 'development'
 };
 
 
@@ -59,7 +73,7 @@ module.exports = {
 			indentWidth: '1'
 		},
 		dev: {
-			sourcemaps: true,
+			sourcemaps: true
 		}
 	},
 	js: {
@@ -76,7 +90,11 @@ module.exports = {
 		output: base.build + '/js/',
 		opt: {
 			'presets': ['es2015']
-		}
+		},
+		concat: true,
+		concatName: 'app.js',
+		uglify: true,
+		uglifyName: 'app.min.js'
 	},
 	ts: {
 		base: base,

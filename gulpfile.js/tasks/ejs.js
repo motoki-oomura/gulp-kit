@@ -1,17 +1,17 @@
 //================================================
 // require
 //================================================
-var plg = require('../plugin'),
+var $ = require('../plugin'),
 	config = require('../config').ejs;
 
 
 //================================================
 // task
 //================================================
-plg.gulp.task(config.name, function(){
-	plg.gulp.src([config.input, config.reject])
-		.pipe(plg.plumber())
-		.pipe(plg.ejs())
-		.pipe(plg.rename(config.rename))
-		.pipe(plg.gulp.dest(config.output));
+$.gulp.task(config.name, function(){
+	$.gulp.src([config.input, config.reject])
+		.pipe($.plumber())
+		.pipe($.ejs())
+		.pipe($.rename(config.rename))
+		.pipe($.gulp.dest(config.output));
 });

@@ -1,14 +1,14 @@
 //================================================
 // require
 //================================================
-var plg = require('../plugin'),
+var $ = require('../plugin'),
 	config = require('../config').zip;
 
 //================================================
 // task
 //================================================
-plg.gulp.task('zip', function(){
-	plg.gulp.src(config.input, config.opt)
-		.pipe(plg.zip(config.zipName))
-		.pipe(plg.gulp.dest(config.output));
+$.gulp.task('zip', function(){
+	$.gulp.src(config.input, config.opt)
+		.pipe($.zip(config.zipName))
+		.pipe($.gulp.dest(config.output));
 });
